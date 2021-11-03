@@ -22,7 +22,7 @@ def training(config_path):
     EPOCHS = config['params']['epochs']
     VALIDATION = (X_valid, y_valid)
 
-    history = model_clf.fit(X_train, y_train, epochs=EPOCHS, validation_data=VALIDATION)
+    history = model.fit(X_train, y_train, epochs=EPOCHS, validation_data=VALIDATION)
 
 
 

@@ -1,5 +1,7 @@
 from src.utils.common import read_config
 from src.utils.data_mgmt import get_data
+from src.utils.model import create_model
+
 import argparse
 
 def training(config_path):
@@ -7,6 +9,23 @@ def training(config_path):
     # print(config)
     validation_datasize=config['params']['validation_datasize']
     (X_train, y_train),(X_valid, y_valid),(X_test, y_test) = get_data(validation_datasize)
+
+    #Creating model with Compile
+    LOSS_FUNCTION=config['params']['loss_function']
+    OPTIMIZER=config['params']['optimizer']
+    METRICS=config['params']['metrics']
+    NUMB_Classes=config['params']['no_clases']
+
+    model=create_model(LOSS_FUNCTION, OPTIMIZER, METRICS,NUMB_Classes)
+
+    #Training the model
+    EPOCHS = config['params']['epochs']
+    VALIDATION = (X_valid, y_valid)
+
+    history = model_clf.fit(X_train, y_train, epochs=EPOCHS, validation_data=VALIDATION)
+
+
+
 
 if __name__ =='__main__':
     args=argparse.ArgumentParser()

@@ -1,11 +1,11 @@
 import tensorflow as tf
 
-def create_model(LOSS_FUNCTION, OPTIMIZER, METRICSnumber_classes):
+def create_model(LOSS_FUNCTION, OPTIMIZER, METRICS,NUMB_Classes):
     LAYERS = [
           tf.keras.layers.Flatten(input_shape=[28,28], name="inputLayer"),
           tf.keras.layers.Dense(300, activation="relu", name="hiddenLayer1"),
           tf.keras.layers.Dense(100, activation="relu", name="hiddenLayer2"),
-          tf.keras.layers.Dense(number_classes, activation="softmax", name="outputLayer")
+          tf.keras.layers.Dense(NUMB_Classes, activation="softmax", name="outputLayer")
           ]
     
     model_clf = tf.keras.models.Sequential(LAYERS)

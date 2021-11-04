@@ -1,6 +1,6 @@
 params:
   test: testKeyowrd
-  epochs: 30
+  epochs: 1
   batch_size: 32
   no_clases: 10
   input_shape: [28,28]
@@ -14,6 +14,7 @@ artifacts:
   model_dir: model
   plots_dir: plots
   checkpoints_dir: checkpoints
+  model_name: model.h5
 
 logs:
   loga_dir: logs_dir

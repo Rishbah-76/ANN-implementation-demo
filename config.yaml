@@ -8,6 +8,8 @@ params:
   metrics: accuracy
   optimizer: SGD
   validation_datasize: 5000
+  restore_best_weights: True
+  patience: 5
 
 artifacts: 
   artifacts_dir: artifacts
@@ -15,8 +17,9 @@ artifacts:
   plots_dir: plots
   checkpoints_dir: checkpoints
   model_name: model.h5
+  plot_name: plot-
 
 logs:
-  loga_dir: logs_dir
+  logs_dir: logs_dir
   general_logs: general_logs
-  tensorboard_logs: tensorboard_logs
+  tensorboard_root_log_dir: tensorboard_log_dir

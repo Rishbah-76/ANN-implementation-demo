@@ -1,6 +1,8 @@
 import os.path
 import tensorflow as tf
 import time
+import pandas as pd
+import matplotlib.pyplot as plt
 
 def create_model(LOSS_FUNCTION, OPTIMIZER, METRICS, NUMB_Classes):
     LAYERS = [
@@ -25,3 +27,16 @@ def save_model(model, model_name,model_dir):
     unique_filename = get_unique_filename(model_name)
     path_to_model = os.path.join(model_dir, unique_filename)
     model.save(path_to_model)
+
+def get_unique_plot_filename(filename):
+    unique_plot_filename = time.strftime(f"{filename}._%Y%m%d_%H%M%S")
+    return unique_plot_filename
+
+def save_plot(filename ,plot_dir,plot):
+    unique_plot_filename = get_unique_filename(filename)
+    pd.DataFrame(plot).plot(figsize=(10, 7))
+    plt.grid(True)
+    plt.show()
+     # ONLY CREATE IF MODEL_DIR DOES NOT EXISTS
+    plotPath = os.path.join(plot_dir, unique_plot_filename)  # model/filename
+    plt.savefig(plotPath)
